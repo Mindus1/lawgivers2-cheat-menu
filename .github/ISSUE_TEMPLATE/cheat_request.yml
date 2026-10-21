@@ -1,0 +1,21 @@
+name: Cheat request
+description: A cheat you'd like to have in the panel.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: cheat
+    attributes:
+      label: What should the cheat do?
+      description: Which number or setting it changes, and to what. For example "keep my party's reputation at 100".
+    validations:
+      required: true
+  - type: textarea
+    id: off
+    attributes:
+      label: What should happen when it's switched off?
+      description: The existing cheats give back the value you had before. Say if this one should work differently.
+  - type: textarea
+    id: where
+    attributes:
+      label: Where in the game
+      description: Where you see that value in the game, so it's easy to find. A screenshot works too.
