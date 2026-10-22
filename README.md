@@ -4,7 +4,7 @@
 
 Unlimited action points and money for Lawgivers II.
 
-![Lawgivers II 0.17.1](https://img.shields.io/badge/Lawgivers_II-0.17.1-F28019?style=flat-square)
+![Lawgivers II 0.17.2](https://img.shields.io/badge/Lawgivers_II-0.17.2-F28019?style=flat-square)
 ![BepInEx 6 IL2CPP](https://img.shields.io/badge/BepInEx-6_IL2CPP-4B5563?style=flat-square)
 ![License: MIT](https://img.shields.io/badge/license-MIT-6B7280?style=flat-square)
 
@@ -20,9 +20,9 @@ The Cheat Menu adds a padlock button to the top-right corner of the HUD, next to
 | Unlimited money | Keeps your party's money at 1T. |
 | Unlimited black money | Keeps your party's black money at 1T. |
 
-When you turn a cheat off, you get back whatever you had before you turned it on. That value is stored in `BepInEx\config\mindus.lawgivers2.cheatmenu.cfg`, so it survives a restart too. The cheats you leave on stay on the next time you play. The padlock is open while any cheat is active.
+When you turn a cheat off, you get back whatever you had before you turned it on, even after a restart. If you save while a cheat is on, the cheated values end up in your save.
 
-If you save while a cheat is on, the cheated values end up in your save.
+The party window's Relations tab also gets an "Edit relations" switch. While it's on, you can drag the bars to set how your party gets along with each of the others.
 
 ## Installation
 
@@ -34,32 +34,9 @@ The Cheat Menu needs the [Mod Library](https://github.com/Mindus1/lawgivers2-mod
 
 You can switch the whole mod off in the MODS menu without restarting. That turns every cheat off, gives you your old values back and hides the padlock.
 
-## Building
+## Documentation
 
-You need the .NET SDK (6 or newer) and the game with BepInEx installed. The project compiles against the installed `ModLibrary.dll` and `ModManager.dll`, so build and install those two first.
-
-```bash
-dotnet build -c Release
-```
-
-The project expects the game in Steam's default folder, `C:\Program Files (x86)\Steam\steamapps\common\Lawgivers II`. If yours is somewhere else, pass `-p:GameDir="..."`, or put a `Directory.Build.props` that sets `GameDir` in the folder above the project. The build copies the DLL into `BepInEx\plugins`, so close the game first.
-
-To publish a release, bump the version in `Plugin.cs`, commit, and run `release.ps1`. It builds the DLL, tags the version, pushes the tag and creates a GitHub release with the DLL attached.
-
-### Adding a cheat
-
-Each cheat holds one number at a fixed value. To add one, put another entry into the list in `Cheats.Load`:
-
-```csharp
-new(config, "UnlimitedSomething", "SomethingBefore",
-    "Unlimited something", "Your something stays at 100. Switching off gives back what you had.",
-    lockedValue: 100,
-    read: () => Instance.Player?.something,   // null while no game is loaded
-    write: value => Instance.Player.something = (int)value,
-    redraw: hud => hud.RefreshSomething()),
-```
-
-The panel picks it up on its own. The first two strings are the config keys for the switch and for the value from before, so don't rename them once people use the cheat.
+The [wiki](../../wiki) explains [how the cheats work](../../wiki/Cheats), [editing relations](../../wiki/Editing-party-relations) and [how to add a cheat of your own](../../wiki/Adding-a-cheat).
 
 ## License
 

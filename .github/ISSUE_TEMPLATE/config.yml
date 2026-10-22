@@ -6,3 +6,6 @@ contact_links:
   - name: Problem with the Mod Manager?
     url: https://github.com/Mindus1/lawgivers2-mod-manager/issues/new/choose
     about: Report it in the Mod Manager repository instead.
+  - name: Problem with the MCP Server?
+    url: https://github.com/Mindus1/lawgivers2-mcp-server/issues/new/choose
+    about: Report it in the MCP Server repository instead.
