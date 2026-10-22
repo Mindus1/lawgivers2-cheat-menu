@@ -7,7 +7,7 @@ using ModManager;
 
 namespace CheatMenu
 {
-    [BepInPlugin(Guid, "Cheat Menu", "1.3.0")]
+    [BepInPlugin(Guid, "Cheat Menu", "1.4.0")]
     [BepInDependency(ModLibrary.Plugin.Guid)]
     [BepInDependency(ModManager.Plugin.Guid)]
     [ModDescription("Adds a Cheats button to the top-right corner of the game.")]
