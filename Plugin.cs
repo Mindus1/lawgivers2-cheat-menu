@@ -1,6 +1,7 @@
 using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
+using HarmonyLib;
 using ModLibrary;
 using ModManager;
 
@@ -20,6 +21,8 @@ namespace CheatMenu
         {
             Log = base.Log;
             Cheats.Load(Config);
+            RelationsEditor.Load(Config);
+            new Harmony(Guid).PatchAll();
             CheatMenu.Install();
             Mods.Register(this, CheatMenu.SetModEnabled);
         }

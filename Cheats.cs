@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using BepInEx.Configuration;
-using Lawgivers;
 using Lawgivers.Interface;
+using ModLibrary;
 
 namespace CheatMenu
 {
@@ -18,22 +18,22 @@ namespace CheatMenu
                 new(config, "UnlimitedActionPoints", "ActionPointsBefore",
                     "Unlimited action points", "Your action points stay at 9. Switching off gives back what you had.",
                     lockedValue: 9,
-                    read: () => Instance.Player?.actions?.points,
-                    write: value => Instance.Player.actions.points = (int)value,
+                    read: () => GameEvents.Player?.actions?.points,
+                    write: value => GameEvents.Player.actions.points = (int)value,
                     redraw: hud => hud.RefreshPartyActionPoints()),
 
                 new(config, "UnlimitedMoney", "MoneyBefore",
                     "Unlimited money", "Your party's money stays at 1T. Switching off gives back what you had.",
                     lockedValue: 1_000_000_000_000,
-                    read: () => Instance.Player?.Party?.money?.value,
-                    write: value => Instance.Player.Party.money.value = value,
+                    read: () => GameEvents.Player?.Party?.money?.value,
+                    write: value => GameEvents.Player.Party.money.value = value,
                     redraw: hud => hud.RefreshPartyMoney()),
 
                 new(config, "UnlimitedBlackMoney", "BlackMoneyBefore",
                     "Unlimited black money", "Your party's black money stays at 1T. Switching off gives back what you had.",
                     lockedValue: 1_000_000_000_000,
-                    read: () => Instance.Player?.Party?.black?.value,
-                    write: value => Instance.Player.Party.black.value = value,
+                    read: () => GameEvents.Player?.Party?.black?.value,
+                    write: value => GameEvents.Player.Party.black.value = value,
                     redraw: hud => hud.RefreshPartyBlack()),
             };
         }

@@ -32,6 +32,7 @@ namespace CheatMenu
                 foreach (var cheat in Cheats.All) cheat.Switch(hud, false);
                 panel?.Root.gameObject.SetActive(false);
             }
+            RelationsEditor.SetModEnabled(enabled);
             button?.SetVisible(enabled);
             ShowCheatStates();
         }
@@ -79,10 +80,10 @@ namespace CheatMenu
         }
 
         // The padlock is open while any cheat is on.
-        static void UpdateIcon()
+        internal static void UpdateIcon()
         {
             if (button == null || lockedIcon == null || unlockedIcon == null) return;
-            button.Icon.sprite = Cheats.All.Any(cheat => cheat.IsOn) ? unlockedIcon : lockedIcon;
+            button.Icon.sprite = Cheats.All.Any(cheat => cheat.IsOn) || RelationsEditor.IsOn ? unlockedIcon : lockedIcon;
         }
     }
 }

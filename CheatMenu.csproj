@@ -19,6 +19,7 @@
   <ItemGroup>
     <Reference Include="$(Core)\BepInEx.Core.dll" />
     <Reference Include="$(Core)\BepInEx.Unity.IL2CPP.dll" />
+    <Reference Include="$(Core)\0Harmony.dll" />
     <Reference Include="$(Core)\Il2CppInterop.Runtime.dll" />
     <Reference Include="$(Interop)\Il2Cppmscorlib.dll" />
     <Reference Include="$(Interop)\Lawgivers.dll" />
